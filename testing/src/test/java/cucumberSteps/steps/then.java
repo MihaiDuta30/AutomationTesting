@@ -14,12 +14,12 @@ public class then {
     HomePage homePage = new HomePage(driver);
     LoginPage loginPage = new LoginPage(driver);
 
-    @Then("I can see Home Page")
+    @Then("The user should be directed to the travels screen")
     public void homePageIsLoaded() {
         Assert.assertTrue(homePage.verifyHomePageDisplayed());
     }
 
-    @And("^I verify if logo(?: and logout button are)? visible on ([^\\”]*)$")
+    @Then("^Verify if logo(?: and logout button are)? visible on ([^\\”]*)$")
     public void verifyLogoAndButton(String page) {
         switch (page) {
             case "HomePage":

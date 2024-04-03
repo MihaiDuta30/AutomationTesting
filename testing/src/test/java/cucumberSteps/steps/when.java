@@ -13,7 +13,7 @@ public class when {
 
     LoginPage login = new LoginPage(driver);
 
-    @When("With {string} I login")
+    @When("With {string} login")
     public void performLogin(String user) throws IOException, ParseException {
         login.loginToApp(user);
     }
