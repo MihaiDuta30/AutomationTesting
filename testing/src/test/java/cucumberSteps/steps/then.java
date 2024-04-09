@@ -7,6 +7,7 @@ import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import pages.HomePage;
 import pages.LoginPage;
+import pages.DashboardPage;
 
 public class then {
     WebDriver driver = Hooks.getDriver();
@@ -31,4 +32,6 @@ public class then {
                 break;
         }
     }
+
+
 }
