@@ -16,5 +16,11 @@ public class when {
     @When("With {string} login")
     public void performLogin(String user) throws IOException, ParseException {
         login.loginToApp(user);
+        login.clickOnLogin();
+    }
+
+    @When("The user clicks on Login button")
+    public void theUserClicksOnLoginButton() {
+        login.clickOnLogin();
     }
 }

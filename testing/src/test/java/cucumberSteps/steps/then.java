@@ -31,4 +31,20 @@ public class then {
                 break;
         }
     }
+
+    @And("The login screen should have a screen title")
+    public void theLoginScreenShouldHaveAScreenTitle() {
+        Assert.assertEquals("Travel Journal", driver.getTitle());
+    }
+
+    @And("The login screen should have a form for entering Email address and Password")
+    public void theLoginScreenShouldHaveAFormForEnteringEmailAddressAndPassword() {
+        Assert.assertTrue(loginPage.usernameField());
+        Assert.assertTrue(loginPage.passwordField());
+    }
+
+    @And("The login screen should have a Log In button")
+    public void theLoginScreenShouldHaveALogInButton() {
+        Assert.assertTrue(loginPage.loginButton());
+    }
 }
