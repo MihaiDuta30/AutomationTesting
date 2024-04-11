@@ -153,20 +153,15 @@ public class DashboardPage {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create("http://localhost:8080/travel-journal/travels"))
+                .header("Authorization", "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZS5hYmVsNTJAZ21haWwuY29tIiwiRmlyc3RfTmFtZSI6Ik1laGVkaW50ZWFudSIsIkxhc3RfTmFtZSI6IkFiZWwtRW1hbnVlbCIsImlhdCI6MTcxMjgzOTg2NSwiZXhwIjoxNzEyODQzNDY1fQ.de65Z7VUkKON0B9Ur960ZQaKMAE2btLyZgOzAWu9mho")
                 .GET()
                 .build();
 
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
         JSONParser parser = new JSONParser();
-        JSONObject jsonObject = (JSONObject) parser.parse(response.body());
-
-        return jsonObject.size() == cards.size();
+        JSONArray jsonArray = (JSONArray) parser.parse(response.body());
+        return jsonArray.size() == cards.size();
     }
-        
 
-//    public boolean verifyRecordedTravels(){
-////        call the API at localhost:8080/
-//    }
-
-    }
+}
