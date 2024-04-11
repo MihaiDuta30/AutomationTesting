@@ -12,6 +12,8 @@ import pages.DashboardPage;
 public class then {
     WebDriver driver = Hooks.getDriver();
 
+    DashboardPage dashboardPage = new DashboardPage(driver);
+
     HomePage homePage = new HomePage(driver);
     LoginPage loginPage = new LoginPage(driver);
 
