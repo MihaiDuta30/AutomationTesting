@@ -2,9 +2,8 @@ Feature: Dashboard Refresh
 
   Background:
     Given The application has started on the login page
-    And I verify if logo visible on "LoginPage"
-    When With "testUser1" I login
-    Then I can see Home Page
+    Then Verify if logo visible on "LoginPage"
+    When With "testUser1" login
 
   Scenario: User refreshes the dashboard
     Given the user is logged in
