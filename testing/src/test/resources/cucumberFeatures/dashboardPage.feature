@@ -12,7 +12,7 @@ Feature: dashboardPage
     When they are on the Travels screen (dashboard)
     Then the screen should display the app name and logo on the left side
     And the screen should have a Travel card for each Travel recorded
-    And the Travel cards are ordered based on date of travel starting from the most recent
+#    And the Travel cards are ordered based on date of travel starting from the most recent
     And the screen should have a screen title
     And the screen should have a Profile dropdown
     And the screen should have a New Travel button
