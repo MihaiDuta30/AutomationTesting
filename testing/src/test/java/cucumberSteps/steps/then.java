@@ -17,12 +17,12 @@ public class then {
     HomePage homePage = new HomePage(driver);
     LoginPage loginPage = new LoginPage(driver);
 
-    @Then("I can see Home Page")
+    @Then("The user should be directed to the travels screen")
     public void homePageIsLoaded() {
         Assert.assertTrue(homePage.verifyHomePageDisplayed());
     }
 
-    @And("^I verify if logo(?: and logout button are)? visible on ([^\\”]*)$")
+    @Then("^Verify if logo(?: and logout button are)? visible on ([^\\”]*)$")
     public void verifyLogoAndButton(String page) {
         switch (page) {
             case "HomePage":
@@ -35,5 +35,19 @@ public class then {
         }
     }
 
+    @And("The login screen should have a screen title")
+    public void theLoginScreenShouldHaveAScreenTitle() {
+        Assert.assertEquals("Travel Journal", driver.getTitle());
+    }
 
+    @And("The login screen should have a form for entering Email address and Password")
+    public void theLoginScreenShouldHaveAFormForEnteringEmailAddressAndPassword() {
+        Assert.assertTrue(loginPage.usernameField());
+        Assert.assertTrue(loginPage.passwordField());
+    }
+
+    @And("The login screen should have a Log In button")
+    public void theLoginScreenShouldHaveALogInButton() {
+        Assert.assertTrue(loginPage.loginButton());
+    }
 }

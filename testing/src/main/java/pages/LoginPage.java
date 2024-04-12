@@ -35,6 +35,18 @@ public class LoginPage extends BasePage {
         return driver.getCurrentUrl().endsWith("/login");
     }
 
+    public boolean usernameField() {
+        return usernameField.isDisplayed();
+    }
+
+    public boolean passwordField() {
+        return passwordField.isDisplayed();
+    }
+
+    public boolean loginButton() {
+        return loginButton.isDisplayed();
+    }
+
     public void loginToApp(String user) throws IOException, ParseException {
 
         Object obj = new JSONParser().parse(new FileReader("src/main/java/utils/users.json"));
@@ -43,15 +55,17 @@ public class LoginPage extends BasePage {
         Map userID = ((Map)jasonObj.get(user));
 
 
-        usernameField.isDisplayed();
+        usernameField();
         usernameField.click();
         usernameField.sendKeys((CharSequence) userID.get("username"));
 
-        passwordField.isDisplayed();
+        passwordField();
         passwordField.click();
         passwordField.sendKeys((CharSequence) userID.get("password"));
+    }
 
-        loginButton.isDisplayed();
+    public void clickOnLogin() {
+        loginButton();
         loginButton.click();
     }
 
