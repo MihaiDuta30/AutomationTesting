@@ -28,4 +28,6 @@ public class HomePage {
     public boolean verifyLogoutButtonIsDisplayed() {
         return logoutButton.isDisplayed();
     }
+
 }
+
