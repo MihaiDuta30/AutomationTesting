@@ -24,6 +24,11 @@ public class given {
     }
 
 
-
-
+    @Given("The user doesn't have an account")
+    public void theUserDoesntHaveAnAccount() {
+        login = new LoginPage(driver);
+        login.failedLogin();
+        login.clickOnLogin();
+        Assert.assertTrue(login.errorMessage());
+    }
 }

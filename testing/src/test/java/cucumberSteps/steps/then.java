@@ -8,6 +8,7 @@ import org.openqa.selenium.WebDriver;
 import pages.HomePage;
 import pages.LoginPage;
 import pages.DashboardPage;
+import pages.RegisterPage;
 
 public class then {
     WebDriver driver = Hooks.getDriver();
@@ -17,6 +18,8 @@ public class then {
     HomePage homePage = new HomePage(driver);
     LoginPage loginPage = new LoginPage(driver);
 
+    RegisterPage registerPage = new RegisterPage(driver);
+
     @Then("The user should be directed to the travels screen")
     public void homePageIsLoaded() {
         Assert.assertTrue(homePage.verifyHomePageDisplayed());
@@ -25,13 +28,11 @@ public class then {
     @Then("^Verify if logo(?: and logout button are)? visible on ([^\\”]*)$")
     public void verifyLogoAndButton(String page) {
         switch (page) {
-            case "HomePage":
+            case "HomePage" -> {
                 Assert.assertTrue(homePage.verifyLogoIsDisplayed());
                 Assert.assertTrue(homePage.verifyLogoutButtonIsDisplayed());
-                break;
-            case "LoginPage":
-                Assert.assertTrue(loginPage.verifyLogoIsDisplayed());
-                break;
+            }
+            case "LoginPage" -> Assert.assertTrue(loginPage.verifyLogoIsDisplayed());
         }
     }
 
@@ -49,5 +50,28 @@ public class then {
     @And("The login screen should have a Log In button")
     public void theLoginScreenShouldHaveALogInButton() {
         Assert.assertTrue(loginPage.loginButton());
+    }
+
+    @Then("Should be redirected to Register page")
+    public void shouldBeRedirectedToRegisterPage() {
+
+    }
+
+    @And("Populate all the required fields")
+    public void fillsAllTheRequiredFields() {
+        Assert.assertTrue(registerPage.firstNameField());
+        Assert.assertTrue(registerPage.lastNameField());
+        Assert.assertTrue(registerPage.emailField());
+        Assert.assertTrue(registerPage.passwordField());
+        Assert.assertTrue(registerPage.confirmPasswordField());
+        registerPage.registerToApp();
+    }
+
+    @Then("Should be redirected to {string} page")
+    public void redirectToPage(String page) {
+        switch (page) {
+            case "Register" -> Assert.assertTrue(registerPage.registerTitle());
+            case "LogIn" -> Assert.assertTrue(loginPage.loginTitle());
+        }
     }
 }

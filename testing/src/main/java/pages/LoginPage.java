@@ -31,6 +31,12 @@ public class LoginPage extends BasePage {
     @FindBy(css = ".login-description .login-description__logo")
     private WebElement pageLogo;
 
+    @FindBy(css = ".login-card .login-card__title")
+    private WebElement loginTitle;
+
+    @FindBy(css = ".error-background .error-message")
+    private WebElement errorMessage;
+
     public boolean isLoginPage() {
         return driver.getCurrentUrl().endsWith("/login");
     }
@@ -45,6 +51,14 @@ public class LoginPage extends BasePage {
 
     public boolean loginButton() {
         return loginButton.isDisplayed();
+    }
+
+    public boolean errorMessage() {
+        return errorMessage.isDisplayed();
+    }
+
+    public boolean loginTitle() {
+        return loginTitle.isDisplayed();
     }
 
     public void loginToApp(String user) throws IOException, ParseException {
@@ -62,6 +76,16 @@ public class LoginPage extends BasePage {
         passwordField();
         passwordField.click();
         passwordField.sendKeys((CharSequence) userID.get("password"));
+    }
+
+    public void failedLogin() {
+        usernameField();
+        usernameField.click();
+        usernameField.sendKeys("failtest@test.com");
+
+        passwordField();
+        passwordField.click();
+        passwordField.sendKeys("123");
     }
 
     public void clickOnLogin() {
