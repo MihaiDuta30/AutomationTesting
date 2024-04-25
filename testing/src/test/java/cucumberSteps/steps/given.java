@@ -8,6 +8,7 @@ import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import pages.LoginPage;
 import pages.DashboardPage;
+import pages.TravelDetailsPage;
 
 import java.io.IOException;
 

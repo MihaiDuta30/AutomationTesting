@@ -27,11 +27,11 @@ public class DashboardPage {
 
     @FindBy(css = ".content h1")
     private WebElement pageTitle;
-    @FindBy(xpath = "//*[@id=\"root\"]/nav/a/img")
+    @FindBy(xpath = "//*[@id=\"root\"]/div/nav/a/img")
     private WebElement pageLogo;
     @FindBy(css = ".navigation")
     private WebElement navigation;
-    @FindBy(css = ".navigation .logout")
+    @FindBy(css = ".logout")
     private WebElement logoutButton;
     @FindBy(css = ".card")
     private WebElement card;
@@ -44,16 +44,16 @@ public class DashboardPage {
     @FindBy(xpath = "//*[@id=\"root\"]/div/div/button")
     private WebElement addTripButton;
 
-    @FindBy(xpath = "//*[@id=\"root\"]/div/div/div[2]/div[1]/div/div/div[1]/img")
+    @FindBy(xpath = "//*[@id=\"root\"]/div/div/div/div[2]/div/div[1]/div/div[1]/div[1]/img")
     private WebElement coverPhoto;
 
-    @FindBy(xpath = "//*[@id=\"root\"]/div/div/div[2]/div[1]/div/div/div[2]/p")
+    @FindBy(xpath = "//*[@id=\"root\"]/div/div/div/div[2]/div/div[1]/div/div[1]/div[2]/p")
     private WebElement cardDestination;
 
-    @FindBy(xpath = "//*[@id=\"root\"]/div/div/div[2]/div[1]/div/div/div[2]/div/p")
+    @FindBy(xpath = "//*[@id=\"root\"]/div/div/div/div[2]/div/div[1]/div/div[1]/div[2]/div/p")
     private WebElement cardDate;
 
-    @FindBy(xpath = "//*[@id=\"root\"]/div/div/div[2]/div[1]/div/div/div[2]/div/div")
+    @FindBy(xpath = "//*[@id=\"root\"]/div/div/div/div[2]/div/div[1]/div/div[1]/div[2]/div/div")
     private WebElement cardPriceAndNotes;
 
     @FindBy(xpath = "//*[@id=\"root\"]/div/div/div[2]/div[1]/div/div/div[3]/button[1]")
@@ -90,6 +90,9 @@ public class DashboardPage {
 
     public boolean verifyCoverPhotoIsDisplayed() {
         return coverPhoto.isDisplayed();
+    }
+    public String getCoverPhotoUrl() {
+        return coverPhoto.getAttribute("src");
     }
 
 
@@ -163,5 +166,69 @@ public class DashboardPage {
         JSONArray jsonArray = (JSONArray) parser.parse(response.body());
         return jsonArray.size() == cards.size();
     }
+
+    public String getDates() {
+        return cardDate.getText();
+    }
+    public String getDestinationName() {
+        return cardDestination.getText();
+    }
+    public void clickCoverPhoto() {
+        coverPhoto.click();
+    }
+
+
+
+    @FindBy(css = ".card")
+    private List<WebElement> travelCards;
+
+    private WebDriver driver;
+
+    public List<WebElement> getAllTravelCards() {
+        return travelCards;
+    }
+
+    public DashboardPage(WebDriver driver, List<WebElement> travelCards) {
+        this.driver = driver;
+        this.travelCards = travelCards;
+        PageFactory.initElements(driver, this);
+    }
+    public int getNumberOfCards() {
+        // Return the number of cards
+        return travelCards.size();
+    }
+
+
+
+    public void clickCoverPhoto2(WebElement coverPhoto) {
+        coverPhoto.click();
+    }
+
+    public String getCoverPhotoUrl2(WebElement card) {
+        // Find the cover photo element within the card
+        WebElement coverPhoto = card.findElement(By.tagName("img"));
+        // Get the source URL of the cover photo
+        String coverPhotoUrl = coverPhoto.getAttribute("src");
+        return coverPhotoUrl;
+    }
+
+    public String getDestinationName2(WebElement card) {
+        // Find the destination element within the card
+        WebElement destinationElement = card.findElement(By.className("fs-3"));
+        // Get the destination name
+        String destinationName = destinationElement.getText();
+        return destinationName;
+    }
+
+    public String getDates2(WebElement card) {
+        // Find the date element within the card
+        WebElement dateElement = card.findElement(By.cssSelector(".color-gray p"));
+        // Get the date
+        String dates = dateElement.getText();
+        return dates;
+    }
+
+
+
 
 }
