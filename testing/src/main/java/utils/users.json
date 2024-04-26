@@ -2,5 +2,10 @@
   "testUser1": {
     "username": "iancovici.teodor.u6e@student.ucv.ro",
     "password": "IancoviciTeodor1"
+  },
+
+  "testUser2": {
+    "username": "mikid1997@gmail.com",
+    "password": "MihaiDuta30"
   }
 }
