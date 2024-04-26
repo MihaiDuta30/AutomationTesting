@@ -14,5 +14,3 @@ Feature: dashboardCard
     And the date rage
     And Budget and number of notes
     And Edit and Delete options
-
-
