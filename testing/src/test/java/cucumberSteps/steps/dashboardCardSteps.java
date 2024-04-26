@@ -9,6 +9,7 @@ import org.json.simple.parser.ParseException;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import pages.DashboardPage;
+import pages.TravelDetailsPage;
 
 import java.io.IOException;
 

@@ -6,12 +6,9 @@ Feature: User Login
     When With "testUser1" login
     Then The user should be directed to the travels screen
 
-    @verifyLogoAndButton
-    Scenario Outline: Verify logo and logout button
-      Then Verify if logo and logout button are visible on "<page>"
-      Examples:
+  @verifyLogoAndButton
+  Scenario Outline: Verify logo and logout button
+    Then Verify if logo and logout button are visible on "<page>"
+    Examples:
       | page     |
       | HomePage |
-
-
-
