@@ -5,7 +5,6 @@ import io.cucumber.java.en.When;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.WebDriver;
 import pages.LoginPage;
-import pages.DashboardPage;
 import pages.RegisterPage;
 
 import java.io.IOException;

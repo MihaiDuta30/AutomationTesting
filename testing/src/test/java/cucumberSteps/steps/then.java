@@ -7,13 +7,10 @@ import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import pages.HomePage;
 import pages.LoginPage;
-import pages.DashboardPage;
 import pages.RegisterPage;
 
 public class then {
     WebDriver driver = Hooks.getDriver();
-
-    DashboardPage dashboardPage = new DashboardPage(driver);
 
     HomePage homePage = new HomePage(driver);
     LoginPage loginPage = new LoginPage(driver);
